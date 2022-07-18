@@ -14,17 +14,26 @@ public class StringStudy2 {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("파일명을 입력");
 		String fileName = sc.next();
+		String [] files = {"jpg","png","gif","jpeg"};
 		int index = 0;
 		index = fileName.lastIndexOf(".");
 		
-		String exts = fileName.substring(index);
-
 		
-		if(exts.equals(".jpg")||exts.equals(".png")||exts.equals(".gif")||exts.equals(".jpeg")) {
-			System.out.println("이미지 파일입니다.");
-		}else {
-			System.out.println("이미지 파일이 아닙니다.");
+		String exts = fileName.substring(index+1);
+		String result = "이미지 파일이 아닙니다.";
+		for(int i=0; i<files.length; i++) {
+			if(exts.equals(files[i])) {
+				result = "이미지 파일입니다.";
+				break;
+			}
+			
 		}
+		System.out.println(result);
+//		if(exts.equals(".jpg")||exts.equals(".png")||exts.equals(".gif")||exts.equals(".jpeg")) {
+//			System.out.println("이미지 파일입니다.");
+//		}else {
+//			System.out.println("이미지 파일이 아닙니다.");
+//		}
 		
 		
 	}
