@@ -15,12 +15,10 @@ public class StringStudy2 {
 		System.out.println("파일명을 입력");
 		String fileName = sc.next();
 		int index = 0;
-		for(int i = 0; i<fileName.length(); i++) {
-			index = fileName.indexOf(".");
-		}
-		System.out.println(index);
+		index = fileName.lastIndexOf(".");
+		
 		String exts = fileName.substring(index);
-		System.out.println(exts);
+
 		
 		if(exts.equals(".jpg")||exts.equals(".png")||exts.equals(".gif")||exts.equals(".jpeg")) {
 			System.out.println("이미지 파일입니다.");
