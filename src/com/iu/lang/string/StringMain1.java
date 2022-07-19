@@ -18,14 +18,20 @@ public class StringMain1 {
 //		System.out.println(str1.equals(str2)); //주소 비교가 아닌 내용 비교, object 클래스의 equals(주소비교)에서 오버라이딩한것
 //		System.out.println(str1.equals(str3)); //주소 비교가 아닌 내용 비교이므로 true
 		
-//		StringStudy ss = new StringStudy();
+		StringStudy ss = new StringStudy();
 //		ss.studyCharAt();
 		
 		StringStudy2 ss2 = new StringStudy2();
 //		ss2.studyIndexOf();
 //		ss2.studyIndexOfEx1();
 //		ss2.studySubString();
-		ss2.ex2();
+//		ss2.ex2();
+		
+		StringStudy3 s3 = new StringStudy3();
+//		s3.studySplit();
+//		s3.StudySplit2();
+		s3.StudySplit3();
+		
 	}
 
 }
