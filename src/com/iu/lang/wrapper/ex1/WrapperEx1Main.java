@@ -9,7 +9,11 @@ public class WrapperEx1Main {
 //		w1.ex1();
 
 		WrapperEx2 w2 = new WrapperEx2();
-		w2.juminCheck();
+//		w2.juminCheck();
+		
+		WrapperEx2re wre = new WrapperEx2re();
+		wre.jumincheck();
+		
 	}
 
 }

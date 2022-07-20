@@ -1,5 +1,7 @@
 package com.iu.lang.string.ex1;
 
+import java.util.StringTokenizer;
+
 public class WorkerService {
 
 	//private String info;
@@ -19,18 +21,34 @@ public class WorkerService {
 		//WorkerDTO를 모은 배열을 리턴
 		String info = this.sb.toString();
 		String newinfo = info.replace(", ", "-");
-		String [] infos = newinfo.split("-");
-		WorkerDTO [] workerDTOs = new WorkerDTO[infos.length/4];
-		for(int i = 0; i<infos.length; i++) {
+		StringTokenizer infos = new StringTokenizer(newinfo, "-");
+		WorkerDTO [] workerDTOs = new WorkerDTO[infos.countTokens()/4];
+		int i = 0;
+		while(infos.hasMoreTokens()) {
 			WorkerDTO workerDTO = new WorkerDTO();
-			workerDTOs[i/4] = workerDTO;
-			workerDTO.setName(infos[i].trim());
-			workerDTO.setDepartment(infos[++i].trim());
-			workerDTO.setJob(infos[++i].trim());
-			workerDTO.setPhone(infos[++i].trim());
+			workerDTOs[i] = workerDTO;
+			workerDTO.setName(infos.nextToken());
+			workerDTO.setDepartment(infos.nextToken());
+			workerDTO.setJob(infos.nextToken());
+			workerDTO.setPhone(infos.nextToken());
+			i++;
 		}
 		
 		return workerDTOs;
+		
+	
+//		String [] infos = newinfo.split("-");
+//		WorkerDTO [] workerDTOs = new WorkerDTO[infos.length/4];
+//		for(int i = 0; i<infos.length; i++) {
+//			WorkerDTO workerDTO = new WorkerDTO();
+//			workerDTOs[i/4] = workerDTO;
+//			workerDTO.setName(infos[i].trim());
+//			workerDTO.setDepartment(infos[++i].trim());
+//			workerDTO.setJob(infos[++i].trim());
+//			workerDTO.setPhone(infos[++i].trim());
+//		}
+		
+//		return workerDTOs;
 		
 		
 //		String [] total = info.split(", "); //사람 별로 구분 4명
