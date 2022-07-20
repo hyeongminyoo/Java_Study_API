@@ -9,10 +9,13 @@ public class WeatherView {
 	
 	public void view(ArrayList<CityDTO> ar) {
 		for(int i = 0; i<ar.size(); i++) {
-			System.out.println(ar.get(i).getName());
-			System.out.println(ar.get(i).getGion());
-			System.out.println(ar.get(i).getHum());
-			System.out.println(ar.get(i).getStatus());
+			CityDTO cityDTO = new CityDTO();
+			cityDTO = ar.get(i);
+			this.view(cityDTO); 
+//			System.out.println(ar.get(i).getName());
+//			System.out.println(ar.get(i).getGion());
+//			System.out.println(ar.get(i).getHum());
+//			System.out.println(ar.get(i).getStatus());
 		}
 		
 	}
@@ -26,8 +29,8 @@ public class WeatherView {
 	
 	}
 	
-	public void view(String str) {
-		System.out.println(str);
+	public void view(String message) {
+		System.out.println(message);
 	}
 	
 	
