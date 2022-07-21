@@ -7,6 +7,7 @@ public class WorkerService {
 	//private String info;
 	private StringBuffer sb;
 	
+	//생성자에서 초기화
 	public WorkerService() {
 		sb = new StringBuffer();
 		sb.append("iu-인사과-과장-0101111");
