@@ -7,11 +7,18 @@ import javax.swing.text.FlowView;
 
 public class WeatherController {
 	
+	private WeatherService ws;
+	private Scanner sc;
+	private WeatherView wv;
+	
+	public WeatherController() {
+		this.ws = new WeatherService(); //객체의 주소를 받아옴
+		this.sc = new Scanner(System.in);
+		this.wv = new WeatherView();
+	}
+	
 	public void start() {
 		ArrayList<CityDTO> ar = new ArrayList<>();
-		WeatherService ws = new WeatherService();
-		WeatherView wv = new WeatherView();
-		Scanner sc = new Scanner(System.in);
 		boolean check = true;
 		
 		while(check) {
@@ -31,15 +38,34 @@ public class WeatherController {
 				wv.view(ar);
 				break;
 			case 3:
-				wv.view(ws.find(ar));
+				CityDTO cityDTO = ws.find(ar);
+				if(cityDTO != null) {
+					wv.view(cityDTO);
+				}else {
+					wv.view("없는 도시명");
+				}
 				break;
 			case 4:
-				ws.add(ar);
+				boolean result = ws.add(ar);
+				String message = "추가 실패";
+				if(result) {
+					message = "추가 성공";
+				}
+				wv.view(message);
 				break;
 			case 5:
-				ws.remove(ar);
+				boolean result1 = ws.remove(ar);
+				String message1 = "삭제 실패";
+				if(result1) {
+					message1 = "삭제 성공";
+				}
+				wv.view(message1);
 				break;
 			case 6:
+				wv.view("프로그램 종료");
+				check = !check;
+				break;
+			default :
 				wv.view("프로그램 종료");
 				check = !check;
 				break;

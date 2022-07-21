@@ -5,6 +5,20 @@ import java.util.ArrayList;
 public class WeatherMain {
 
 	public static void main(String[] args) {
+		WeatherController wc = new WeatherController();
+		wc.start();
+		
+		ArrayList<String> ar1 = new ArrayList<>();
+		//배열을 제외한 컬렉션 타입은 reference 타입만 담을수 있다.
+		ArrayList<String> ar2;
+		//generic 타입이 다르면 다른 데이터타입
+		
+		ArrayList<ArrayList<String>> ars = new ArrayList<>();
+		ArrayList<ArrayList<String>> ars2 = new ArrayList<>();
+
+		ArrayList<ArrayList<ArrayList<String>>> arsAll = new ArrayList<>();
+		
+		
 		//1. 클래스의 역할과 메서드의 역할, 변수의 역할 파악
 		//WeatherMain	   	: 프로그램 실행, Test 
 		//WeatherService 	: Data 가공 
@@ -32,8 +46,6 @@ public class WeatherMain {
 //		wv.view(ar);
 		
 		
-		WeatherController wc = new WeatherController();
-		wc.start();
 	}
 
 }

@@ -35,7 +35,7 @@ public class WeatherService {
 		System.out.println("초기화 완료");
 	}
 	
-	public void add(ArrayList<CityDTO> ar) {
+	public boolean add(ArrayList<CityDTO> ar) {
 		CityDTO cd = new CityDTO();
 		System.out.println("도시 명을 입력하세요");
 		cd.setName(sc.next());
@@ -46,39 +46,59 @@ public class WeatherService {
 		System.out.println("상태 입력");
 		cd.setStatus(sc.next());
 		
-		ar.add(cd);
+		return ar.add(cd);
 		
-	}
+	}//add메서드 끝
 	
-	public void remove(ArrayList<CityDTO> ar) {
+	public boolean remove(ArrayList<CityDTO> ar) {
 		System.out.println("삭제할 도시명 입력");
-		String cityName = sc.next();
-		cityName = cityName.toUpperCase();
+		String cityName = sc.next().toUpperCase();
+		boolean r = false;
 		
 		for(int i = 0 ; i<ar.size(); i++) {
 			String str = ar.get(i).getName().toUpperCase();
-			if(str.equals(cityName)) {
+			if(cityName.equals(str)) {
 				ar.remove(i);
-				System.out.println("삭제 완료");
+				r = !r;
+				break;
+			}
+		}
+		return r;
+		
+//		for(CityDTO cityDTO : ar) {
+//			if(cityName.equals(cityDTO.getName())) {
+//				ar.remove(cityDTO);
+//				break;
+//			}
+//		}
+		
+		
+	}//remove 메서드 끝
+	
+	public CityDTO find(ArrayList<CityDTO> ar) {
+		CityDTO cityDTO = null;
+		System.out.println("검색할 도시명 입력");
+		String cityName = sc.next().toUpperCase();
+		
+//		for(int i = 0; i<ar.size(); i++) {
+//			String str = ar.get(i).getName().toUpperCase();
+//			if(str.equals(cityName)) {
+//				cityDTO = ar.get(i);
+//				break;
+//			}
+//		}
+		
+		//향상된 for 문
+		for(CityDTO ctd : ar) {
+			String str = ctd.getName().toUpperCase();
+			if(cityName.equals(str)) {
+				cityDTO = ctd;
 				break;
 			}
 		}
 		
-	}
-	
-	public CityDTO find(ArrayList<CityDTO> ar) {
-		System.out.println("검색할 도시명 입력");
-		String cityName = sc.next();
-		cityName = cityName.toUpperCase();
 		
-		for(int i = 0; i<ar.size(); i++) {
-			String str = ar.get(i).getName().toUpperCase();
-			if(str.equals(cityName)) {
-				return ar.get(i);
-			}
-		}
-		
-		return null;
+		return cityDTO;
 		
 	}
 	
