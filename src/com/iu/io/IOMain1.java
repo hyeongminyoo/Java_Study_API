@@ -12,14 +12,16 @@ public class IOMain1 {
 		InputStream is = System.in; //byte 처리 byte 단위로 조합
 		InputStreamReader ir = new InputStreamReader(is); // 한글자 단위로 변경 
 		BufferedReader br = new BufferedReader(ir); // 글자 단위를 모음 컴퓨터 내 버퍼에 입력
+		System.out.println("키보드에서 입력 후 엔터");
+		String msg="";
 		try {
-			System.out.println("키보드에서 입력 후 엔터");
-			String msg = br.readLine();
-			System.out.println(msg);
+			msg = br.readLine();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println(msg);
+
 		
 
 	}
