@@ -7,9 +7,12 @@ public class ExMain {
 
 	public static void main(String[] args) {
 		ArrayList<StudentDTO> ar = new ArrayList<>();
+		StudentService sc = new StudentService();
 		StudentDAO sd = new StudentDAO();
 		try {
-			ar = sd.getList();
+//			ar = sd.getList();
+			ar = sc.getList();
+//			sd.setList(ar);
 			for(int i=0; i<ar.size(); i++) {
 				System.out.println(ar.get(i).getName());
 				System.out.println(ar.get(i).getNum());

@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
@@ -23,14 +24,28 @@ public class StudentDAO {
 		//1을 리턴 : 정상적인 성공
 		//0을 리턴 : 예외가 발생했을 경우
 		
+		File file = new File("C:\\study\\StudentData.txt");
+		try {
+			FileWriter fw = new FileWriter(file, false);
+			boolean check = true;
+			
+			fw.write("\r\n");
+			for(int i = 0; i<ar.size(); i++) {
+				fw.write(ar.get(i).getName()+",");
+				fw.write(ar.get(i).getNum()+",");
+				fw.write(ar.get(i).getKor()+",");
+				fw.write(ar.get(i).getEng()+",");
+				fw.write(ar.get(i).getMath()+"\r\n");
+				fw.flush();
+			}
+			return 1;
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return 0;
+		}
 		
-		
-		
-		
-		
-		
-		
-		return 0;
 	}
 	
 	
@@ -62,8 +77,6 @@ public class StudentDAO {
 				sdt.setKor(Integer.parseInt(st.nextToken().trim()));
 				sdt.setEng(Integer.parseInt(st.nextToken().trim()));
 				sdt.setMath(Integer.parseInt(st.nextToken().trim()));
-				sdt.setTotal((sdt.getKor()+sdt.getEng()+sdt.getMath())/3);
-				sdt.setAvg(sdt.getTotal()/3.0);
 				ar.add(sdt);
 			}
 		}
