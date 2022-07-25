@@ -27,7 +27,6 @@ public class StudentDAO {
 		File file = new File("C:\\study\\StudentData.txt");
 		try {
 			FileWriter fw = new FileWriter(file, false);
-			boolean check = true;
 			
 			fw.write("\r\n");
 			for(int i = 0; i<ar.size(); i++) {
@@ -36,8 +35,8 @@ public class StudentDAO {
 				fw.write(ar.get(i).getKor()+",");
 				fw.write(ar.get(i).getEng()+",");
 				fw.write(ar.get(i).getMath()+"\r\n");
-				fw.flush();
 			}
+			fw.flush();
 			return 1;
 			
 		} catch (Exception e) {

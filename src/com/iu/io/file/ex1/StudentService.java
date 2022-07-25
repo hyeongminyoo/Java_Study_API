@@ -5,9 +5,18 @@ import java.util.Scanner;
 
 public class StudentService implements Service {
 	
+	private StudentDAO studentDAO;
+	private Scanner sc;
+	
+	
+	public StudentService() {
+		this.studentDAO = new StudentDAO();
+		this.sc = new Scanner(System.in);
+	}
+	
+	
 	@Override
 	public ArrayList<StudentDTO> getList() throws Exception {
-		StudentDAO studentDAO = new StudentDAO();
 		ArrayList<StudentDTO> ar = new ArrayList<>();
 		ar = studentDAO.getList();
 		
@@ -26,14 +35,12 @@ public class StudentService implements Service {
 	
 	@Override
 	public int setList(ArrayList<StudentDTO> ar) throws Exception {
-		StudentDAO studentDAO = new StudentDAO();
 		int result = studentDAO.setList(ar);
 		return result;
 	}
 	
 	@Override
 	public StudentDTO getStudent(ArrayList<StudentDTO> ar) throws Exception {
-		Scanner sc = new Scanner(System.in);
 		System.out.println("학생의 번호를 입력하세요");
 		int num = sc.nextInt();
 		
@@ -49,7 +56,6 @@ public class StudentService implements Service {
 	
 	@Override
 	public int setStudentDelete(ArrayList<StudentDTO> ar) throws Exception {
-		Scanner sc = new Scanner(System.in);
 		System.out.println("삭제하려는 학생의 번호 입력");
 		int num = sc.nextInt();
 		
@@ -65,7 +71,7 @@ public class StudentService implements Service {
 	
 	@Override
 	public void setStudentAdd(ArrayList<StudentDTO> ar) throws Exception {
-		Scanner sc = new Scanner(System.in);
+
 		StudentDTO studentDTO = new StudentDTO();
 		System.out.println("추가 학생의 이름 입력");
 		studentDTO.setName(sc.next());
@@ -77,6 +83,7 @@ public class StudentService implements Service {
 		studentDTO.setEng(sc.nextInt());
 		System.out.println("수학점수 입력");
 		studentDTO.setMath(sc.nextInt());
+		
 		
 		ar.add(studentDTO);
 	

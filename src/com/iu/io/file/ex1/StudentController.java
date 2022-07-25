@@ -18,6 +18,7 @@ public class StudentController {
 		StudentService ss = new StudentService();
 		StudentView sv = new StudentView();
 		
+		ar = ss.getList();
 		boolean check = true;
 		
 		while(check) {
@@ -33,7 +34,6 @@ public class StudentController {
 			
 			switch(select) {
 				case 1:
-					ar = ss.getList();
 					sv.view(ar);
 					break;
 				
